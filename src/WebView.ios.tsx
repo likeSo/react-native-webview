@@ -238,6 +238,10 @@ class WebView extends React.Component<IOSWebViewProps, State> {
     }
   };
 
+  onDocumentTitleChange = (event: WebViewTitleChanging) => {
+    
+  }
+
   onLoadingProgress = (event: WebViewProgressEvent) => {
     const { onLoadProgress } = this.props;
     if (onLoadProgress) {

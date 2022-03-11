@@ -127,6 +127,10 @@ export interface WebViewMessage extends WebViewNativeEvent {
   data: string;
 }
 
+export interface WebViewTitleChanging extends WebViewNativeEvent {
+  title: string;
+}
+
 export interface WebViewError extends WebViewNativeEvent {
   /**
    * `domain` is only used on iOS and macOS
@@ -292,6 +296,7 @@ export interface CommonNativeWebViewProps extends ViewProps {
   onLoadingStart: (event: WebViewNavigationEvent) => void;
   onHttpError: (event: WebViewHttpErrorEvent) => void;
   onMessage: (event: WebViewMessageEvent) => void;
+  onDocumentTitleChange?: (event: WebViewTitleChanging) => void;
   onShouldStartLoadWithRequest: (event: ShouldStartLoadRequestEvent) => void;
   showsHorizontalScrollIndicator?: boolean;
   showsVerticalScrollIndicator?: boolean;
@@ -1133,6 +1138,11 @@ export interface WebViewSharedProps extends ViewProps {
    * Function that is invoked when the `WebView` starts loading.
    */
   onLoadStart?: (event: WebViewNavigationEvent) => void;
+
+  /**
+   * Function that is invoked when the `WebView` document's title changes
+   */
+  onDocumentTitleChange?: (event: WebViewTitleChanging) => void;
 
   /**
    * Function that is invoked when the `WebView` load fails.
